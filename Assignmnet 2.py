@@ -1,4 +1,4 @@
-
+# Product Class
 class Product:
     def __init__(self, name, price, quantity, product_type):    
         # Initializing a product class which contains name, price, quantity, and type.
@@ -23,7 +23,7 @@ class Product:
         # Calculating the total price for the quantity purchased.
         return round(self.price * quantity_bought, 2)
 
-
+# Inventory Class
 class Inventory:
     def __init__(self):
         # Initializing the inventory with an empty list of products.
@@ -71,7 +71,7 @@ def input_with_error_handling(prompt, value_type=float):
         except ValueError:  # If conversion fails, ValueError is raised
             print(f"Invalid input. Please enter a valid {value_type.__name__} value.")  # Show an error message
 
-
+# Defining main function
 def main():
     # Main function for interaction of user with inventory system.
     inventory = Inventory()
