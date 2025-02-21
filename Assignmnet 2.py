@@ -76,6 +76,7 @@ def main():
     # Main function for interaction of user with inventory system.
     inventory = Inventory()
 
+     # Displays a menu of options for the user to interact with the inventory system.
     while True:
         print("\nOptions:")
         print("1. View All Products")
@@ -86,14 +87,17 @@ def main():
         print("6. Purchase Products")
         print("7. Exit")
 
+        # Takes user input for selecting an option.
         choice = input("Enter your choice (1-7): ")
 
         if choice == '1':
+            # Option to display all products in the inventory.
             print("\nAll Products in Inventory:")
             print(inventory.list_all_products())
             print("\nTotal number of products:", inventory.count_products())
 
         elif choice == '2':
+            # Option to add a new product to the inventory.
             print("\n--- Add a New Product ---")
             name = input("Enter  the product name: ")
 
@@ -107,12 +111,14 @@ def main():
             print(f"\nNew product {name} added to inventory.")
 
         elif choice == '3':
+            # Option to view products by a specific type.
             print("\n--- View Products by Type ---")
             product_type = input("Enter product type (e.g., Leafy green, Root, etc.): ")
             print(f"\nProducts of type '{product_type}':")
             print(inventory.list_products_by_type(product_type))
 
         elif choice == '4':
+            # Option to remove a product from the inventory by name.
             print("\n--- Remove a Product ---")
             product_name = input("Enter the name of the product  you want to remove: ")
             product = inventory.find_product_by_name(product_name)
@@ -123,6 +129,7 @@ def main():
                 print(f"\n{product_name} not found in inventory.Please add the product into Inventory First")
 
         elif choice == '5':
+            # Option to restock an existing product in the inventory.
             print("\n--- Restock Product ---")
             product_name = input("Enter the product name to restock: ")
             quantity_to_add = input_with_error_handling("Enter the quantity to add: ", int)
@@ -134,6 +141,7 @@ def main():
                 print(f"\n{product_name} not found in inventory. Please add the Product in inventory First")
 
         elif choice == '6':
+            # Option to purchase products from the inventory.
             print("\n--- Purchase Products ---")
             total_cost = 0
             product_purchased = False
@@ -154,18 +162,21 @@ def main():
                 else:
                     print(f"{product_name} not found in inventory.")
 
+             # If any product was purchased, show the total cost; otherwise, display a message.
             if product_purchased:
                 print(f"\nTotal cost for your purchase: {total_cost} RS")
             else:
                 print("No products purchased.")
-
+       
+        # Option to exit the inventory management system.
         elif choice == '7':
             print("\nExiting Inventory Management System.")
             break
-
+        
+        # If the user enters an invalid option, display an error message.
         else:
             print("\n Please try again. Your choice is invalid.")
 
-
+# Start the program by calling the main function.
 if __name__ == "__main__":
     main()
